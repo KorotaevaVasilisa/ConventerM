@@ -2,73 +2,46 @@ package ru.korotaeva.vasilisa.conventerm;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root
-public class ValCurs {
+import java.io.Serializable;
+import java.util.List;
 
-    @Attribute
-    private String Date;
+@Root(name = "ValCurs",strict = false)
+public class ValCurs implements Serializable {
+//    @Attribute(required = false)
+//    private String Date;
+//
+//    @Attribute(required = false)
+//    private String name;
 
-    @Attribute
-    private String Name;
-    @Element
-    private Valute Valute;
+    @ElementList(inline=true,name = "Valute")
+    private List<Valute> Valutes;
+//
+//    public String getDate() {
+//        return Date;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
 
-    public String getDate() {
-        return Date;
+    public ValCurs() {
     }
 
-    public String getName() {
-        return Name;
+    public List<Valute> getValutes() {
+        return Valutes;
     }
 
-    public ValCurs.Valute getValute() {
-        return Valute;
-    }
-
-    public class Valute{
-        @Attribute
-        private String ID;
-
-        @Element
-        private  int NumCode;
-
-        @Element
-        private String CharCode;
-
-        @Element
-        private  int Nominal;
-
-        @Element
-        private String Name;
-
-        @Element
-        private Double Value;
-
-        public String getID() {
-            return ID;
-        }
-
-        public int getNumCode() {
-            return NumCode;
-        }
-
-        public String getCharCode() {
-            return CharCode;
-        }
-
-        public int getNominal() {
-            return Nominal;
-        }
-
-        public String getName() {
-            return Name;
-        }
-
-        public Double getValue() {
-            return Value;
-        }
+    @Override
+    public String toString() {
+        return "ValCurs{" +
+//                "Date='" + Date + '\'' +
+//                ", name='" + name + '\'' +
+                ", Valutes=" + Valutes +
+                '}';
     }
 }
+
 
